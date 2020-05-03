@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+    <%- include('templates/header'); -%>
+
+    <script src="https://js.squareup.com/v2/paymentform"></script>
+    <link rel="stylesheet" type="text/css" href="css/payment_form.css">
+    <script>
+        const SQUAREUP_APPLICATION_ID = '<%= SQUAREUP_APPLICATION_ID %>';
+    </script>
+</head>
+
+<body>
+    <%- include('templates/navbar'); -%>
+
+    <!--Modulo de pago (Paypal)-->
+    <div style="width: 60%; position: relative;top: 150px;margin-left: 20%; padding-left: 25%;">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_donations" />
+            <input type="hidden" name="business" value="enexius20@gmail.com" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="image" src="images/donacion-paypal.png" border="0" width="50%" height="40%" name="submit"
+                title="Donar con PayPal" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_DO/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+    </div>
+
+    <!--Boton de donar (procesadora de pago incluida) ESTA ES LA DE SQUAREUP (API) -->
+    <div class="input-group mb-3" style="width: 60%; position: relative;top: 150px;margin-left: 20%; padding-left: 25%;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input type="text" id="input-cantidad" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+        </div>
+      </div>
+    <div id="form-container">
+        <div id="sq-card"></div>
+        <button id="sq-creditcard" class="button-credit-card"
+            title="Donar con Tarjeta Visa, Mastercard, AmericanExpress, u otras...">Donar con otros</button>
+
+    </div>
+
+
+    <%- include('templates/footer'); -%>
+    <script src="js/payment_form.js"></script>
+
+</body>
+
+</html>
